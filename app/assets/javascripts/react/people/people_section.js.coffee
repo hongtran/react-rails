@@ -13,9 +13,11 @@
       search: ''
       page: 1  
   componentDidMount: ->
+    console.log('mount')
     @_subscribeToEvents()
     @_fetchPeople({})
   componentWillUnMount: ->
+    console.log('unmount')
     @_unSubscribeFromEvents()  
   _subscribeToEvents: ->
     PubSub.subscribe 'resetButton:onClick', ()=>
@@ -38,7 +40,7 @@
       didFetchData: true
       people: data.people
       meta: data.meta
-  _fetchDataDail: (data, status, jqXHR) ->
+  _fetchDataFail: (data, status, jqXHR) ->
     console.error @props.url, status, err.toString()
   _handleOnPaginate: (pageNumber) ->
     @state.fetchData.page = pageNumber

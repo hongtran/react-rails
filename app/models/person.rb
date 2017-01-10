@@ -1,5 +1,6 @@
 class Person < ApplicationRecord
 	include PgSearch
+  paginates_per 15
 	enum gender: [:male, :female]
 	scope :sorted, ->{ order(first_name: :asc) }
     pg_search_scope :search,
